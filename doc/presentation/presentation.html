@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Sergiy Goloviatinski - inf3dlm-b - HE-Arc">
+  <title>ReinforcementLearning</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="./reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="./reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="slides.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? './reveal.js/css/print/pdf.css' : './reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="./reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">ReinforcementLearning</h1>
+  <p class="author">Sergiy Goloviatinski - inf3dlm-b - HE-Arc</p>
+  <p class="date">31 Janvier 2019</p>
+</section>
+
+<section id="sommaire" class="slide level2">
+<h2>Sommaire</h2>
+<p><br/> <br/></p>
+<ul>
+<li>But du projet</li>
+<li>Déroulement du projet</li>
+<li>Introduction au Reinforcement Learning</li>
+<li>Points importants du projet</li>
+<li>Conclusion</li>
+<li>Questions</li>
+</ul>
+</section>
+<section id="but-du-projet" class="slide level2">
+<h2>But du projet</h2>
+<p><br/> <br/></p>
+<ul>
+<li>Prendre en main des solutions de deep RL</li>
+<li>Développer un module Python de RL avec des approches de deep Q-Learning</li>
+</ul>
+</section>
+<section id="déroulement-du-projet" class="slide level2">
+<h2>Déroulement du projet</h2>
+<p><br/> <br/></p>
+<ul>
+<li>Apprentissage RL + deep RL</li>
+<li>Comparaison frameworks deep RL</li>
+<li>Écriture d’un module python utilisant framework retenu pour explorer 2 scénarios:
+<ul>
+<li>Doom (interface: VizDoom<sup><a href="https://github.com/mwydmuch/ViZDoom">[1]</a></sup>)</li>
+<li>FlappyBird (interface: PyGame Learning Environment<sup><a href="https://github.com/ntasfi/PyGame-Learning-Environment">[2]</a></sup>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="quest-ce-que-le-reinforcement-learning" class="slide level2">
+<h2>Qu’est-ce que le Reinforcement Learning ?</h2>
+<p><span class="fragment current-visible"> <img data-src="./img/rl_schema.png" /></span> <span class="fragment current-visible"> <img data-src="./img/rl_schema2.png" /></span></p>
+<aside class="notes">
+<p>Le Reinforcement learning (apprentissage par renforcement en français), est une technique utilisée en intelligence artificielle consistant à faire apprendre à une IA quelles actions entreprendre selon l’état de l’environnement au moment d’entreprendre cette action, afin de maximiser un score.</p>
+Ne pas donner d’exemple avant image mario bros
+</aside>
+</section>
+<section id="exploits-du-reinforcement-learning" class="slide level2">
+<h2>Exploits du Reinforcement Learning</h2>
+<div class="left3">
+<p><br/> <br/></p>
+<ul>
+<li>AlphaGo<sup><a href="https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf">[3]</a></sup> : 2016</li>
+<li>AlphaGo Zero<sup><a href="https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ">[4]</a></sup>: 2017</li>
+<li>AlphaStar<sup><a href="https://deepmind.com/blog/alphastar-mastering-real-time-strategy-game-starcraft-ii/">[5]</a></sup> : 2019</li>
+</ul>
+</div>
+<div class="right3">
+<div class="fragment current-visible">
+<p><img data-src="./img/go.jpeg" /></p>
+</div>
+<div class="fragment current-visible">
+<p><img data-src="./img/starcraft.jpg" /></p>
+</div>
+</div>
+<aside class="notes">
+Dire juste qu’ils ont réussi de battre champion du monde/alphago/2 joueurs pro et que c’est surtout ca qui a fait parler du RL dernièrement
+</aside>
+</section>
+<section id="q-learning" class="slide level2">
+<h2>Q-Learning</h2>
+<ul>
+<li>Q comme “qualité”</li>
+<li><em>“Fonction qui prédit qualité d’une action exécutée dans un état donnée du système en se basant sur des expériences passées”</em></li>
+</ul>
+<div class="row fragment current-visible">
+<div class="column2">
+<p><img data-src="./img/qtable0.png" /></p>
+</div>
+<div class="column2">
+<p><img data-src="./img/qtable1.png" /></p>
+</div>
+</div>
+<div class="row fragment current-visible">
+<div class="column2">
+<p><img data-src="./img/qtable01.png" /></p>
+</div>
+<div class="column2">
+<p><img data-src="./img/qtable10.png" /></p>
+</div>
+</div>
+<aside class="notes">
+Au début, q table vide donc exploration Dire que les valeurs de la Q-Table se mettront à jour à chaque nouvelle action, selon la récompense reçue Donc au bout d’un moment quand on aura assez de Q-values, on pourra passer à l’exploitation
+</aside>
+</section>
+<section id="deep-q-learning" class="slide level2">
+<h2>Deep Q-Learning</h2>
+<p><br/> <br/> <img data-src="./img/dqn.png" /></p>
+<aside class="notes">
+on peut utiliser le réseau de neurones pour approximer une fonction qui donnerait une Q-Value pour un état donné, en essayant de généraliser pour tous les états possibles en sauvegardant les poids des neurones pour chaque état différent et en réutilisation pour améliorer généralisation
+</aside>
+</section>
+<section id="comparaison-de-frameworks-de-rl" class="slide level2">
+<h2>Comparaison de frameworks de RL</h2>
+<ul>
+<li>keras-rl<sup><a href="https://github.com/keras-rl/keras-rl">[6]</a></sup> vs dopamine<sup><a href="https://github.com/google/dopamine">[7]</a></sup></li>
+<li>Critères de comparaison
+<ul>
+<li>Présence de divers algorithmes de deep Q-Learning</li>
+<li>Facilité d’intégration</li>
+<li>Maturité et fréquence de mise à jour sur github</li>
+<li>Pour un scénario donné:
+<ul>
+<li>Temps d’apprentissage pour n épisodes</li>
+<li>Score moyen sur 100 épisodes de test</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="framework-retenu-keras-rl" class="slide level2">
+<h2>Framework retenu: keras-rl</h2>
+<figure>
+<img data-src="./img/comparaison0.png" alt="Tableau 1: Comparaison: même algorithme, même scénario, mêmes hyperparamètres" /><figcaption>Tableau 1: Comparaison: même algorithme, même scénario, mêmes hyperparamètres</figcaption>
+</figure>
+<figure>
+<img data-src="./img/comparaison.png" alt="Tableau 2: Comparaison: différents algorithmes, même scénario, même hyperparamètres quand possible" /><figcaption>Tableau 2: Comparaison: différents algorithmes, même scénario, même hyperparamètres quand possible</figcaption>
+</figure>
+<ul>
+<li>Plus facile à prendre en main que dopamine</li>
+<li>Meilleurs scores dans scénarios de test</li>
+<li>Plus mature</li>
+<li>Le reste des critères, ~ équivalent</li>
+</ul>
+<aside class="notes">
+Tableau du bas: 2 algos dopamine + 2 algos keras-rl Les slides d’après, j’ai utilisé keras-rl pour les scénarios
+</aside>
+</section>
+<section id="doom---présentation-du-scénario" class="slide level2">
+<h2>Doom - Présentation du scénario</h2>
+<div class="fragment current-visible">
+<div class="left4">
+<p>Récompense:</p>
+<ul>
+<li>Par défaut:
+<ul>
+<li>+1 si tue ennemi</li>
+<li>-1 si meurt</li>
+</ul></li>
+<li><strong>+1 si touche ennemi</strong></li>
+<li><strong>-0.1 si perds vie/munition</strong></li>
+</ul>
+</div>
+<div class="right4">
+<p><img data-src="./img/croppedDoomFrame.png" /></p>
+</div>
+</div>
+<div class="fragment current-visible">
+<div class="left4">
+<p>Données accessibles:</p>
+<ul>
+<li>Input du réseau de neurones:
+<ul>
+<li>Pixels (<span style="color:#00ff00;">78</span>x<span style="color:#ff00ff;">52</span> ou 160x<span style="color:#ff00ff;">84</span>)</li>
+</ul></li>
+<li>Calcul de la fonction de score:
+<ul>
+<li>Points de vie</li>
+<li>Munitions</li>
+<li>Nombre de touchers</li>
+</ul></li>
+</ul>
+</div>
+<div class="right4">
+<p><img data-src="./img/croppedDoomFrame.png" /></p>
+</div>
+</div>
+</section>
+<section id="doom---résultats" class="slide level2">
+<h2>Doom - Résultats</h2>
+<div class="row">
+<div class="column resize-img fragment">
+Début entraînement<br/><br/> <video width="320" height="240" controls> <source src="./img/untrained_doom.ogv" type="video/ogg"></video> </span>
+</div>
+<div class="column resize-img fragment">
+NN Input:<br/>image <span style="color:#00ff00;">78</span>x<span style="color:#ff00ff;">52</span><video width="320" height="240" controls> <source src="./img/midtrained_doom.ogv" type="video/ogg"></video><img data-src="./img/doom_78x51.png" />
+</div>
+<div class="column resize-img fragment">
+NN Input:<br/>image 160x<span style="color:#ff00ff;">84</span><video width="320" height="240" controls> <source src="./img/trained_doom.ogv" type="video/ogg"></video><img data-src="./img/doom_160x84.png" />
+</div>
+</div>
+</section>
+<section id="flappy-bird---présentation-du-scénario" class="slide level2">
+<h2>Flappy Bird - Présentation du scénario</h2>
+<div class="fragment current-visible">
+<div class="left2 align-left">
+<p>Récompense:</p>
+<ul>
+<li>+1 par tuyau passé</li>
+<li><strong>hauteur impact dernier tuyau</strong></li>
+<li>-5 si tombe</li>
+</ul>
+</div>
+<div class="right2">
+<p><img data-src="./img/flappyBirdScore.png" /></p>
+</div>
+</div>
+<div class="fragment current-visible">
+<div class="left2 align-left">
+<p>Input réseau de neurones:</p>
+<ul>
+<li>Vecteur caractéristique
+<ul>
+<li><strong>player y position</strong></li>
+<li>players velocity</li>
+<li>next pipe distance to player</li>
+<li><strong>next pipe top y position</strong></li>
+<li><strong>next pipe bottom y position</strong></li>
+<li>next next pipe distance to player</li>
+<li>next next pipe top y position</li>
+<li>next next pipe bottom y position</li>
+</ul></li>
+</ul>
+</div>
+<div class="right2">
+<p><img data-src="./img/flappyBirdScore.png" /></p>
+</div>
+</div>
+</section>
+<section id="flappy-bird---résultats" class="slide level2">
+<h2>Flappy Bird - Résultats</h2>
+<div class="row">
+<div class="column fragment resize-img2">
+Début entraînement <img data-src="./img/untrained_flappybird.gif" /> <img data-src="./img/flappybirdGraph_begin.png" />
+</div>
+<div class="column fragment resize-img2">
+Premiers progrès <img data-src="./img/midtrained_flappybird.gif" /> <img data-src="./img/flappybirdGraph_middle.png" />
+</div>
+<div class="column fragment resize-img2">
+Fin entraînement <img data-src="./img/trained_flappybird.gif" /> <img data-src="./img/flappybirdGraph_end.png" />
+</div>
+</div>
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<p><br/> <br/></p>
+<ul>
+<li>Grande partie du projet était l’apprentissage des algorithmes de deep RL</li>
+<li>Difficultés du RL
+<ul>
+<li>Interface avec environnement</li>
+<li>Conception de la fonction de récompense (important)</li>
+<li>Accès aux données</li>
+</ul></li>
+<li>Résultats convaincants, surtout FlappyBird</li>
+</ul>
+</section>
+<section id="questions" class="slide level2">
+<h2>Questions ?</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="./reveal.js/lib/js/head.min.js"></script>
+  <script src="./reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: './reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: './reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
