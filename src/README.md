@@ -1,0 +1,12 @@
+# Organisation du dossier src
+- venv_rl: environnement virtuel python contenant packages pip requis pour le bon fonctionnement du projet
+- doom_scenarios: contient fichiers requis pour éxecuter les scénarios doom
+- doom_saves: contient modèles entraînes les plus intéressants pour doom (si vous entraînez d'autres modèles, ils seront aussi dans ce dossier)
+    - oneShotKill est un autre modèle avec une taille d'image à 78x51, mais il était entraîné avec lw wad où les ennemis mouraient en un coup
+- flappybird_saves: contient modèles entraînes les plus intéressants pour flappy bird (si vous entraînez d'autres modèles, ils seront aussi dans ce dossier)
+- ple: module du py learning environment utilisé dans le cadre de ce projet
+- rl: module de keras-rl utilisé dans le cadre de ce projet (branche master)
+- rl_per: partie de keras-rl implémentant le PER (bramche keras-rl-v0.4.2) + modification de la methode fit du agent où on peut définir une limite en épisodes et pas en steps
+- `doom.py` : code pour lancer scénarios doom, à exécuter
+- `flappybird.py` : code pour lancer scénarios flappybird, à exécuter
+- `common.py`: code utilisé par `doom.py` et `flappybird.py`, pas prévu d'être exécuté

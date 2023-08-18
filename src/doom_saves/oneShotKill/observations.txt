@@ -1,0 +1,2 @@
+- des fois l'agent tourne à droite et faire face au mur et se fait tuer
+- déjà observé le cas où l'agent dépense toutes ses munitions et se fait tuer
